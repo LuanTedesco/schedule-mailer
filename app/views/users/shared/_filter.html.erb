@@ -1,0 +1,17 @@
+<%= form_tag users_path, method: :get, class: 'd-flex align-items-center gap-2', id: 'filter-form' do %>
+  <div class="flex-grow-1">
+    <%= text_field_tag :filter_name, params[:filter_name], class: 'form-control form-control-light', placeholder: t('filter.name') %>
+  </div>
+  <div class="flex-grow-1">
+    <%= text_field_tag :filter_email, params[:filter_email], class: 'form-control form-control-light', placeholder: t('filter.email') %>
+  </div>
+  <div class="flex-grow-1">
+    <%= select_tag :filter_role, options_for_select(User.roles.keys.map { |role| [t("roles.#{role}"), role] }, params[:filter_role]), include_blank: t('filter.select_role'), class: 'form-select form-select-light' %>
+  </div>
+  <div class="flex-grow-1 d-flex gap-2">
+    <button type="submit" class="btn btn-primary w-100 d-flex align-items-center justify-content-center" id="filter-btn">
+      <i class="ri-filter-2-fill"></i>
+      <span class="ms-1"><%= t('filter.filter') %></span>
+    </button>
+  </div>
+<% end %>

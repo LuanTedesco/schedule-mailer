@@ -1,0 +1,87 @@
+<style>
+  .custom-alert-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 350px;
+    z-index: 1050;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
+  }
+
+  .custom-alert {
+  margin-bottom: 0;
+    cursor: pointer;
+  }
+
+  .fade-in {
+    animation: fadeIn 0.7s;
+  }
+
+  .fade-out {
+    animation: fadeOut 0.7s;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+</style>
+<div class="custom-alert-container">
+  <% flash.each do |key, message| %>
+    <% alert_class = case key %>
+  <% when 'success' then 'alert-success text-bg-success' %>
+  <% when 'error' then 'alert-danger text-bg-danger' %>
+  <% when 'warning' then 'alert-warning text-bg-warning' %>
+  <% when 'alert' then 'alert-warning text-bg-warning' %>
+  <% when 'info' then 'alert-info text-bg-info' %>
+  <% when 'primary' then 'alert-primary text-bg-primary' %>
+  <% when 'secondary' then 'alert-secondary text-bg-secondary' %>
+  <% end %>
+  <% icon_class = case key %>
+<% when 'success' then 'ri-check-line' %>
+<% when 'error' then 'ri-close-circle-line' %>
+<% when 'warning' then 'ri-alert-line' %>
+<% when 'alert' then 'ri-alert-line' %>
+<% when 'info' then 'ri-information-line' %>
+<% when 'primary' then 'ri-star-line' %>
+<% when 'secondary' then 'ri-star-line' %>
+<% end %>
+<div class="custom-alert alert <%= alert_class %> alert-dismissible border-0 fade show fade-in" role="alert">
+  <i class="<%= icon_class %> me-1 align-middle font-16"></i> <%= message %>
+</div>
+<% end %>
+</div>
+<script>
+  document.querySelectorAll('.custom-alert').forEach(function(alert) {
+    alert.addEventListener('click', function() {
+      alert.classList.remove('show', 'fade-in');
+      alert.classList.add('fade-out');
+      setTimeout(function() {
+        alert.remove();
+      }, 150);
+    });
+
+    setTimeout(function() {
+      alert.classList.remove('show', 'fade-in');
+      alert.classList.add('fade-out');
+      setTimeout(function() {
+        alert.remove();
+      }, 150);
+    }, 5000);
+  });
+</script>

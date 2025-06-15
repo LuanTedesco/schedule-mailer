@@ -1,0 +1,80 @@
+<div class="container-fluid">
+  <div class="collapse" id="filters">
+    <div class="mt-3 px-0">
+      <%= render "users/shared/filter" %>
+    </div>
+  </div>
+  <div class="d-flex justify-content-between align-items-center my-3">
+    <div class="d-flex">
+      <%= link_to new_user_path, "data-controller": "turbo", class: "btn btn-primary d-flex align-items-center" do %>
+        <i class="ri-add-fill"></i>
+        <span class="ms-1"><%= t('index.user') %></span>
+      <% end %>
+      <div class="mx-2">
+        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#filters" aria-expanded="false" aria-controls="filters">
+          <i class="ri-filter-fill"></i>
+          <span class="ms-1"><%= t('kanban.show_filters') %></span>
+        </button>
+      </div>
+    </div>
+    <div>
+      <%== pagy_bootstrap_nav(@pagy) %>
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-centered w-100 dt-responsive nowrap" id="boards-datatable">
+      <thead class="table-light">
+        <tr>
+          <th><%= t('index.name') %></th>
+          <th><%= t('index.email') %></th>
+          <th><%= t('index.departaments') %></th>
+          <th width="100px"><%= t('index.role') %></th>
+          <th width="100px"><%= t('index.status') %></th>
+          <th width="100px"><%= t('index.actions') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td>
+              <% user.departaments.each do |departament| %>
+                <span class="badge badge-info-lighten"><%= departament.name.upcase %></span>
+              <% end %>
+            </td>
+            <td>
+              <% role_class = case user.role
+                when 'user' then 'badge badge-success-lighten'
+                when 'admin' then 'badge badge-secondary-lighten'
+                when 'manager' then 'badge badge-warning-lighten'
+                when 'moderator' then 'badge badge-danger-lighten'
+              end %>
+              <span class="badge <%= role_class %>">
+                <%= t("role.#{user.role}") %>
+              </span>
+            </td>
+            <td>
+              <span class="badge <%= user.status ? 'bg-success' : 'bg-danger' %>">
+                <%= user.status ? t('status.true') : t('status.false') %>
+              </span>
+            </td>
+            <td class="table-action justify-content-center align-items-center text-nowrap">
+              <a href="<%= edit_user_path(user) %>" data-controller="turbo" class="action-icon">
+                <i class="mdi mdi-square-edit-outline"></i>
+              </a>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-end align-items-center gap-3 mb-3">
+      <div class="align-self-center">
+        <%== pagy_info(@pagy) %>
+      </div>
+      <div>
+        <%== pagy_bootstrap_nav(@pagy) %>
+      </div>
+    </div>
+  </div>
+</div>

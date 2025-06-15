@@ -1,0 +1,207 @@
+pt-BR:
+pt-BR:
+  history:
+    less_than_one_business_day: "menos de 1 dia útil"
+    business_day:
+      one: "1 dia útil"
+      other: "%{count} dias úteis"
+    change_interval: "Coluna alterada em"
+  attributes:
+    unknown: "Desconhecido"
+    at: "em"
+    user_responsable_id: "Responsável"
+    progress_id: "Progresso"
+    board_id: "Quadro"
+  tzinfo:
+    ago: atrás
+  pagy:
+    info:
+      single_page: 'Exibindo <b>%{count}</b> item'
+      multiple_pages: 'Exibindo itens <b>%{from}-%{to}</b> de <b>%{count}</b> no total'
+    nav:
+      prev: '&lsaquo; Anterior'
+      next: 'Próximo &rsaquo;'
+  select: Selecione
+  actions:
+    edit: Editar
+    destroy: Apagar
+  attributes:
+    event: 'Evento'
+    date: 'Data'
+    user: 'Usuário'
+    unknown: 'Desconhecido'
+    no_changes: 'Sem alterações registradas'
+    user_responsable_id: 'Responsável'
+    progress_id: 'Coluna'
+    board_id: 'Quadro'
+    at: em
+  modal:
+    board: Quadro
+    progresses: Colunas
+    subtasks: Sub Tasks
+    attachments: Anexos
+    comments: Comentários
+    changes: Alterações
+  status:
+    active: 'Ativo'
+    inactive: 'Inativo'
+  form:
+    name: Nome
+    title: Titulo
+    description: Descrição
+    days_to_end: Prazo
+    departament: Departamento
+    text: Texto
+    color: Cor
+    email: Email
+    password: Senha
+    password_confirmation: Confirmação de senha
+    start_at: Inicia em
+    finished_at: Finalizado em (Automático)
+    end_at: Prazo (Automático)
+    avatar: Foto
+    priority: Prioridade
+    board: Quadro
+    progress: Coluna
+    company: Empresa
+    tags: Etiquetas
+    edit: Editar
+    copy_link: Copiar Link
+    view: Ver
+    profile: Perfil
+    responsable: Responsavel
+    departaments: Departamentos
+    role: Cargo
+    situation: Situação
+    level: Nível
+    save: Salvar
+    entry_progress: Coluna de entrada
+    exit_progress: Coluna de saída
+  show:
+    edit: Editar
+    copy_link: Copiar Link
+    description: Descrição
+    responsable: Responsavel
+    company: Empresa
+    created_at: Criado em
+    started_at: Inicio em
+    ahead: Antes do prazo
+    on_the_day: No dia
+    delayed: Atrasado
+    in: em
+    days: dias
+    of: de
+    end_at: Prazo
+    finished_at: Finalizado em
+  filter:
+    title: Titulo
+    name: Nome
+    email: Email
+    board: Quadro
+    priority: Prioridade
+    responsable: Responsavel
+    situation: Situação
+    progress: Coluna
+    departament: Departamento
+    content: Conteúdo
+    all: Todas
+    created_by: Criado por
+    created_at: Criado em
+    started_at: Iniciado em
+    finished_at: Finalizado em
+    overdue: Vencidas
+    on_time: No prazo
+    completed: Finalizadas
+    end_at: Prazo
+    finished: Finalizado
+    comments: Comentários
+    changes: Alterações
+    read: Lidas
+    unread: Não lidas
+    date_type:
+      creation: Criadas
+      completion: Finalizadas
+    tag: Etiqueta
+    tags: Etiquetas
+    description: Descrição
+    days_to_end: Prazo
+    filter: Filtrar
+    export: Exportar
+  kanban:
+    task: Tarefa
+    show_filters: Filtros
+    show_import: Importar Tarefas
+    use_filter_to_list_completed_tasks: Filtre para carregar as tarefas
+    start_at: Iniciado em
+    end_at: Prazo
+  index:
+    name: Nome
+    title: Titulo
+    content: Conteúdo
+    received_at: Recebido em
+    progress: Coluna
+    replicator_task: Replicador de Tarefas
+    priority: Prioridade
+    created_by: Criado por
+    tags: Etiquetas
+    start_at: Inicia em
+    days_to_end: Prazo
+    finished: Finalizado
+    finished_at: Finalizado em
+    read: Lida
+    readed: Lida
+    unread: Não lida
+    mark_as_unread: Marcar como não lida
+    mark_as_read: Marcar como lida
+    mark_all_as_read: Marcar todas como lidas
+    mark_all_as_unread: Marcar todas como não lidas
+    go_to: Ir para
+    at: em
+    view: Ver
+    responsable: Responsavel
+    end_at: Prazo
+    description: Descrição
+    departament: Departamento
+    departaments: Departamentos
+    comment: Comentario
+    anexed_by: Anexado por
+    delete: Apagar
+    date: Data
+    user: Usuário
+    role: Cargo
+    situation: Situação
+    level: Nivel
+    tag: Etiqueta
+    color: Cor
+    progresses: Colunas
+    subtask: Sub Task
+    board: Quadro
+    company: Empresa
+    status: Status
+    actions: Ações
+    are_you_sure: Você tem certeza?
+    entry_progress: Coluna de entrada
+    exit_progress: Coluna de saída
+  topbar:
+    menu: Menu
+    boards: Quadros
+    departaments: Departamentos
+    tags: Etiquetas
+    reports: Relatórios
+    tasks: Tarefas
+    replicatortask: Replicador de Tarefa
+    automations: Automações
+    settings: Configurações
+    companies: Empresas
+    users: Usuários
+    replicatortasks: Replicador de Tarefas
+    notifications: Notificações
+    show_all: Mostrar tudo
+    theme_mode: Tema
+    profile: Perfil
+    logout: Sair
+  role:
+    user: 'Usuário'
+    admin: 'Administrador'
+    manager: 'Gerente'
+    moderator: 'Moderador'

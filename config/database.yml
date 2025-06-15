@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: razonet_tasks_development
+  username: <%= ENV["USERNAME_DATABASE"] %>
+  password: <%= ENV["PASSWORD_DATABASE"] %>
+
+test:
+  <<: *default
+  database: razonet_tasks_test
+  username: <%= ENV["USERNAME_DATABASE"] %>
+  password: <%= ENV["PASSWORD_DATABASE"] %>
+
+production:
+  <<: *default
+  database: razonet_tasks_production
+  username: <%= ENV["USERNAME_DATABASE"] %>
+  password: <%= ENV["RAZONET_tasks_PASSWORD"] %>
