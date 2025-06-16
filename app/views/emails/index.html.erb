@@ -1,14 +1,60 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Emails</h1>
-
-<div id="emails">
-  <% @emails.each do |email| %>
-    <%= render email %>
-    <p>
-      <%= link_to "Show this email", email %>
-    </p>
-  <% end %>
+<div class="container-fluid">
+  <div class="d-flex justify-content-between align-items-center my-3">
+    <div class="d-flex">
+      <%= link_to new_email_path, "data-controller":"turbo", class: "btn btn-primary d-flex align-items-center" do %>
+        <i class="ri-add-fill"></i>
+        <span class="ms-1"><%= t("index.email") %></span>
+      <% end %>
+    </div>
+    <div>
+      <%== pagy_bootstrap_nav(@pagy) %>
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-responsive table-centered w-100 dt-responsive nowrap" id="emails-datatable">
+      <thead class="table-light">
+        <tr>
+          <th><%= t("index.to") %></th>
+          <th><%= t("index.mail") %></th>
+          <th><%= t("index.body") %></th>
+          <th><%= t("index.scheduled_at") %></th>
+          <th><%= t("index.sended") %></th>
+          <th><%= t("index.status") %></th>
+          <th width="100px"><%= t("index.actions") %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @emails.each do |email| %>
+          <tr>
+            <td><%= email.to.titleize %></td>
+            <td><%= email.mail %></td>
+            <td><%= email.body %></td>
+            <td><%= email.scheduled_at %></td>
+            <td><%= email.sended %></td>
+            <td>
+              <span class="badge <%= email.status ? 'bg-success' : 'bg-danger' %>">
+                <%= email.status ? t('status.true') : t('status.false') %>
+              </span>
+            </td>
+            <td class="table-action justify-content-center align-items-center text-nowrap">
+              <a href="<%= edit_email_path(email.id) %>" data-controller="turbo" class="action-icon">
+                <i class="mdi mdi-square-edit-outline"></i>
+              </a>
+              <a href="<%= email_path(email) %>" data-turbo-method="delete" data-turbo-confirm="<%= t('index.are_you_sure') %>" class="action-icon">
+                <i class="mdi mdi-delete"></i>
+              </a>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-end align-items-center gap-3 mb-3">
+      <div class="align-self-center">
+        <%== pagy_info(@pagy) %>
+      </div>
+      <div>
+        <%== pagy_bootstrap_nav(@pagy) %>
+      </div>
+    </div>
+  </div>
 </div>
-
-<%= link_to "New email", new_email_path %>

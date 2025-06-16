@@ -1,32 +1,38 @@
-<%= form_with(model: email) do |form| %>
+<%= form_with(model: email, class: 'form-horizontal') do |f| %>
   <% if email.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(email.errors.count, "error") %> prohibited this email from being saved:</h2>
-
-      <ul>
+    <div class="alert alert-danger">
+      <h4 class="alert-heading"><%= pluralize(email.errors.count, "erro") %> impediram esta email de ser salva:</h4>
+      <ul class="mb-0">
         <% email.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :to, style: "display: block" %>
-    <%= form.text_field :to %>
+  <div class="mb-3">
+    <%= f.label :to, t("form.to"), class: "form-label" %>
+    <%= f.text_field :to, class: "form-control form-control-light", maxlength: 15, required: true %>
   </div>
-
-  <div>
-    <%= form.label :mail, style: "display: block" %>
-    <%= form.text_field :mail %>
+  <div class="mb-3">
+    <%= f.label :mail, t("form.mail"), class: "form-label" %>
+    <%= f.text_field :mail, class: "form-control form-control-light", required: true %>
   </div>
-
-  <div>
-    <%= form.label :body, style: "display: block" %>
-    <%= form.text_field :body %>
+  <div class="mb-3">
+    <%= f.label :body, t("form.body"), class: "form-label" %>
+    <%= f.text_area :body, class: "form-control form-control-light", required: true %>
   </div>
-
-  <div>
-    <%= form.submit %>
+  <div class="mb-3">
+    <%= f.label :scheduled_at, t("form.scheduled_at"), class: "form-label" %>
+    <%= f.datetime_select :scheduled_at, class: "form-control form-control-light", required: true %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :sended, t("form.sended"), class: "form-label" %>
+    <%= f.select :sended, { "Sim" => true, "Não" => false }, class: "form-control form-control-light", required: true %>
+  </div>
+  <div class="d-flex justify-content-end">
+    <button type="submit" class="btn btn-primary d-flex align-items-center justify-content-center">
+      <i class="ri-save-3-fill"></i>
+      <span class="ms-1"><%= t("form.save") %></span>
+    </button>
   </div>
 <% end %>

@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "bootstrap_modal" do %>
+  <%= render partial: "layouts/modal", locals: { partial_name: "emails/form", partial_locals: { email: @email } } %>
+<% end %>

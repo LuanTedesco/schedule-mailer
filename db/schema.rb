@@ -14,10 +14,13 @@ ActiveRecord::Schema[7.0].define(version: 2025_06_15_230638) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "emails", force: :cascade do |t|
+  create_table "emails", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "to"
     t.string "mail"
     t.string "body"
+    t.datetime "scheduled_at", default: -> { "CURRENT_TIMESTAMP" }
+    t.boolean "sended", default: false
+    t.boolean "status", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

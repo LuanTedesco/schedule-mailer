@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   layout "application_signed"
-  before_action :check_permission
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
