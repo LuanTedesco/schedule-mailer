@@ -5,18 +5,18 @@ default: &default
 
 development:
   <<: *default
-  database: razonet_tasks_development
+  database: schedule_mailer_development
   username: <%= ENV["USERNAME_DATABASE"] %>
   password: <%= ENV["PASSWORD_DATABASE"] %>
 
 test:
   <<: *default
-  database: razonet_tasks_test
+  database: schedule_mailer_test
   username: <%= ENV["USERNAME_DATABASE"] %>
   password: <%= ENV["PASSWORD_DATABASE"] %>
 
 production:
   <<: *default
-  database: razonet_tasks_production
+  database: schedule_mailer_production
   username: <%= ENV["USERNAME_DATABASE"] %>
-  password: <%= ENV["RAZONET_tasks_PASSWORD"] %>
+  password: <%= ENV["schedule_mailer_PASSWORD"] %>
