@@ -7,17 +7,17 @@ document.addEventListener('DOMContentLoaded', event => {
 })
 
 document.addEventListener('DOMContentLoaded', function () {
-  const passwordToggles = document.querySelectorAll('[data-password]');
+  const passwordToggles = document.querySelectorAll('[data-password]')
 
   passwordToggles.forEach(toggle => {
     toggle.addEventListener('click', function () {
-      const input = this.previousElementSibling;
-      const isPassword = input.getAttribute('type') === 'password';
-      input.setAttribute('type', isPassword ? 'text' : 'password');
-      this.setAttribute('data-password', !isPassword);
-    });
-  });
-});
+      const input = this.previousElementSibling
+      const isPassword = input.getAttribute('type') === 'password'
+      input.setAttribute('type', isPassword ? 'text' : 'password')
+      this.setAttribute('data-password', !isPassword)
+    })
+  })
+})
 
 function applyTheme() {
   let localTheme = localStorage.getItem('userTheme')
@@ -63,28 +63,4 @@ function setTheme(theme) {
     topbarElement.classList.add('bg-dark')
     themeIcon.classList.replace('ri-moon-line', 'ri-sun-line')
   }
-}
-
-document.addEventListener(
-  'wheel',
-  function (event) {
-    if (event.ctrlKey) {
-      document.querySelector('.kanban').scrollLeft += event.deltaY
-    }
-  },
-  { passive: false }
-)
-
-function getLuminance(hex) {
-  hex = hex.replace('#', '')
-
-  let r = parseInt(hex.substring(0, 2), 16) / 255
-  let g = parseInt(hex.substring(2, 4), 16) / 255
-  let b = parseInt(hex.substring(4, 6), 16) / 255
-
-  r = r <= 0.03928 ? r / 12.92 : Math.pow((r + 0.055) / 1.055, 2.4)
-  g = g <= 0.03928 ? g / 12.92 : Math.pow((g + 0.055) / 1.055, 2.4)
-  b = b <= 0.03928 ? b / 12.92 : Math.pow((b + 0.055) / 1.055, 2.4)
-
-  return 0.2126 * r + 0.7152 * g + 0.0722 * b
 }
