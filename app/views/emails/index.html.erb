@@ -14,13 +14,13 @@
     <table class="table table-responsive table-centered w-100 dt-responsive nowrap" id="emails-datatable">
       <thead class="table-light">
         <tr>
-          <th><%= t("index.to") %></th>
-          <th><%= t("index.subject") %></th>
-          <th><%= t("index.body") %></th>
-          <th><%= t("index.scheduled_at") %></th>
-          <th><%= t("index.sended") %></th>
-          <th><%= t("index.status") %></th>
-          <th width="100px"><%= t("index.actions") %></th>
+          <th><%= t("email.to") %></th>
+          <th><%= t("email.subject") %></th>
+          <th><%= t("email.body") %></th>
+          <th><%= t("email.scheduled_at") %></th>
+          <th><%= t("email.sended") %></th>
+          <th><%= t("email.status") %></th>
+          <th width="100px"><%= t("email.actions") %></th>
         </tr>
       </thead>
       <tbody>
@@ -40,7 +40,7 @@
               <a href="<%= edit_email_path(email.id) %>" data-controller="turbo" class="action-icon">
                 <i class="mdi mdi-square-edit-outline"></i>
               </a>
-              <a href="<%= email_path(email) %>" data-turbo-method="delete" data-turbo-confirm="<%= t('index.are_you_sure') %>" class="action-icon">
+              <a href="<%= email_path(email) %>" data-turbo-method="delete" data-turbo-confirm="<%= t('email.are_you_sure') %>" class="action-icon">
                 <i class="mdi mdi-delete"></i>
               </a>
             </td>

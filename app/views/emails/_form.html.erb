@@ -10,25 +10,25 @@
     </div>
   <% end %>
   <div class="mb-3">
-    <%= f.label :to, t("form.to"), class: "form-label" %>
+    <%= f.label :to, t("email.to"), class: "form-label" %>
     <%= f.email_field :to, class: "form-control form-control-light", required: true %>
   </div>
   <div class="mb-3">
-    <%= f.label :subject, t("form.subject"), class: "form-label" %>
+    <%= f.label :subject, t("email.subject"), class: "form-label" %>
     <%= f.text_field :subject, class: "form-control form-control-light", maxlength: 15, required: true %>
   </div>
   <div class="mb-3">
-    <%= f.label :body, t("form.body"), class: "form-label" %>
+    <%= f.label :body, t("email.body"), class: "form-label" %>
     <%= f.text_area :body, class: "form-control form-control-light", required: true %>
   </div>
   <div class="mb-3">
-    <%= f.label :scheduled_at, t("form.scheduled_at"), class: "form-label" %>
+    <%= f.label :scheduled_at, t("email.scheduled_at"), class: "form-label" %>
     <%= f.datetime_field :scheduled_at, value: Time.current.strftime("%Y-%m-%dT%H:%M"), class: "form-control form-control-light", required: true %>
   </div>
   <div class="d-flex justify-content-end">
     <button type="submit" class="btn btn-primary d-flex align-items-center justify-content-center">
       <i class="ri-save-3-fill"></i>
-      <span class="ms-1"><%= t("form.save") %></span>
+      <span class="ms-1"><%= t("email.save") %></span>
     </button>
   </div>
 <% end %>
