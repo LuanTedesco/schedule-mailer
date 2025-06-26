@@ -45,6 +45,19 @@ class EmailsController < ApplicationController
     redirect_to emails_path
   end
 
+  def boost_email_body
+    text = params[:body]
+
+    result = RequestGemini.new.boost_email_body(ENV["TESTE"], text)
+    render json: { result: result }
+  end
+
+  def fix_errors_body
+    text = params[:body]
+    result = RequestGemini.new.fix_errors_body("Corrija erros de português", text)
+    render json: { result: result }
+  end
+
   private
 
   def set_email
