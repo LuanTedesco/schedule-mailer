@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_06_15_230638) do
 
   create_table "emails", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "to"
-    t.string "mail"
+    t.string "subject"
     t.string "body"
     t.datetime "scheduled_at", default: -> { "CURRENT_TIMESTAMP" }
     t.boolean "sended", default: false

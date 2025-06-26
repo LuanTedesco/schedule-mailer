@@ -15,7 +15,7 @@
       <thead class="table-light">
         <tr>
           <th><%= t("index.to") %></th>
-          <th><%= t("index.mail") %></th>
+          <th><%= t("index.subject") %></th>
           <th><%= t("index.body") %></th>
           <th><%= t("index.scheduled_at") %></th>
           <th><%= t("index.sended") %></th>
@@ -27,9 +27,9 @@
         <% @emails.each do |email| %>
           <tr>
             <td><%= email.to.titleize %></td>
-            <td><%= email.mail %></td>
+            <td><%= email.subject.titleize %></td>
             <td><%= email.body %></td>
-            <td><%= email.scheduled_at %></td>
+            <td><%= email.scheduled_at.strftime("%d/%m/%Y %H:%M:%S") %></td>
             <td><%= email.sended %></td>
             <td>
               <span class="badge <%= email.status ? 'bg-success' : 'bg-danger' %>">

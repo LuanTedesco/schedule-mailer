@@ -16,8 +16,14 @@ class EmailsController < ApplicationController
 
   def create
     @email = Email.new(email_params)
-
     @email.save
+
+    if @email.scheduled_at.present? && @email.scheduled_at < Time.current
+      response = EmailMailer.send_email(@email).deliver_now
+      #@email.update(sended: true) if response.status == 200
+      flash[:success] = "Email enviado com sucesso."
+    end
+
     flash[:success] = "Email was successfully created."
     redirect_to emails_path
   end
@@ -42,6 +48,6 @@ class EmailsController < ApplicationController
   end
 
   def email_params
-    params.require(:email).permit(:to, :mail, :body)
+    params.require(:email).permit(:to, :subject, :body, :status, :scheduled_at, :sended)
   end
 end
