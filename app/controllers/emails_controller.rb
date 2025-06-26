@@ -19,9 +19,13 @@ class EmailsController < ApplicationController
     @email.save
 
     if @email.scheduled_at.present? && @email.scheduled_at < Time.current
-      response = EmailMailer.send_email(@email).deliver_now
-      #@email.update(sended: true) if response.status == 200
-      flash[:success] = "Email enviado com sucesso."
+      begin
+        EmailMailer.send_email(@email).deliver_now
+        @email.update(sended: true)
+        flash[:success] = "Email enviado com sucesso."
+      rescue => e
+        flash[:error] = "Falha ao enviar o e-mail: #{e.message}"
+      end
     end
 
     flash[:success] = "Email was successfully created."

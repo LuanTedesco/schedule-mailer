@@ -23,7 +23,7 @@
   </div>
   <div class="mb-3">
     <%= f.label :scheduled_at, t("form.scheduled_at"), class: "form-label" %>
-    <%= f.datetime_field :scheduled_at, class: "form-control form-control-light", required: true %>
+    <%= f.datetime_field :scheduled_at, value: Time.current.strftime("%Y-%m-%dT%H:%M"), class: "form-control form-control-light", required: true %>
   </div>
   <div class="d-flex justify-content-end">
     <button type="submit" class="btn btn-primary d-flex align-items-center justify-content-center">
