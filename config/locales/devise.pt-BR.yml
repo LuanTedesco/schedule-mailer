@@ -20,7 +20,7 @@ pt-BR:
       confirmation_instructions:
         subject: "Instruções de confirmação"
       reset_password_instructions:
-        subject: "Redefinição da senha Razonet Tasks"
+        subject: "Redefinição da senha Schedule Mailer"
       unlock_instructions:
         subject: "Instruções para desbloquear"
       email_changed:

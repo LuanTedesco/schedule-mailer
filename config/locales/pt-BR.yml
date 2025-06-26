@@ -16,19 +16,8 @@ pt-BR:
   topbar:
     mails: Emails
     menu: Menu
-    boards: Quadros
-    departaments: Departamentos
-    tags: Etiquetas
-    reports: Relatórios
-    tasks: Tarefas
-    replicatortask: Replicador de Tarefa
-    automations: Automações
     settings: Configurações
-    companies: Empresas
     users: Usuários
-    replicatortasks: Replicador de Tarefas
-    notifications: Notificações
-    show_all: Mostrar tudo
     theme_mode: Tema
     profile: Perfil
     logout: Sair
