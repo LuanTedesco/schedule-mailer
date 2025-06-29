@@ -19,5 +19,6 @@ module ScheduleMailer
     #
     config.time_zone = "Brasilia"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.eager_load_paths << Rails.root.join("lib")
   end
 end

@@ -35,6 +35,8 @@ class RequestGemini
     }
 
     response = RestClient.post(url, payload.to_json, headers)
-    return JSON.parse(response.body)
+    json = JSON.parse(response.body)
+
+    json.dig("candidates", 0, "content", "parts", 0, "text")
   end
 end

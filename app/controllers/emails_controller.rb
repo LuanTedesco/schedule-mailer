@@ -48,13 +48,13 @@ class EmailsController < ApplicationController
   def boost_email_body
     text = params[:body]
 
-    result = RequestGemini.new.boost_email_body(ENV["TESTE"], text)
+    result = RequestGemini.new.boost_email_body(Utils::GeminiUtils::BOOST_PROMPT, text)
     render json: { result: result }
   end
 
   def fix_errors_body
     text = params[:body]
-    result = RequestGemini.new.fix_errors_body("Corrija erros de português", text)
+    result = RequestGemini.new.fix_errors_body(Utils::GeminiUtils::FIX_PROMPT, text)
     render json: { result: result }
   end
 
