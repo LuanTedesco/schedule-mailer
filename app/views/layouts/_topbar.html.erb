@@ -29,45 +29,41 @@
                     <i class="uil-cog p-1"></i><%= t('topbar.settings') %>
                     <div class="arrow-down"></div>
                   </a>
-                  <!--                  <div class="dropdown-menu dropdown-menu-animated" aria-labelledby="topnav-menu">-->
-                  <%#= link_to users_path, class: "dropdown-item", data: { turbo: false } do %>
-                    <!--                      <i class="ri-user-line me-2"></i><span><%#= t('topbar.users') %></span>-->
-                    <%# end %>
-                    <!--                  </div>-->
-                  </li>
-                </ul>
-              </div>
-            </nav>
-          </div>
+                  <div class="dropdown-menu dropdown-menu-animated" aria-labelledby="topnav-menu">
+                    <%= link_to users_path, class: "dropdown-item", data: { turbo: false } do %>
+                      <i class="ri-user-line me-2"></i><span><%= t('topbar.users') %></span>
+                    <% end %>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </nav>
         </div>
-        <div>
-          <ul class="topbar-menu d-flex align-items-center gap-3">
-            <li class="d-none d-sm-inline-block">
-              <div class="nav-link" id="light-dark-mode" data-bs-toggle="tooltip" data-bs-placement="left" title="<%= t('topbar.theme_mode') %>">
-                <i class="ri-moon-line font-22" id="theme-icon-toggle"></i>
-              </div>
-            </li>
-            <li class="dropdown">
-              <a class="nav-link dropdown-toggle arrow-none px-2 d-flex align-items-center" data-bs-toggle="dropdown" href="#"
+      </div>
+      <div>
+        <ul class="topbar-menu d-flex align-items-center gap-3">
+          <li class="d-none d-sm-inline-block">
+            <div class="nav-link" id="light-dark-mode" data-bs-toggle="tooltip" data-bs-placement="left" title="<%= t('topbar.theme_mode') %>">
+              <i class="ri-moon-line font-22" id="theme-icon-toggle"></i>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a class="nav-link dropdown-toggle arrow-none px-2 d-flex align-items-center" data-bs-toggle="dropdown" href="#"
                role="button" aria-haspopup="false" aria-expanded="false">
-                <span class="d-lg-flex flex-column gap-1 d-none">
-                  <h5 class="my-0"><%= current_user.name %></h5>
-                  <h6 class="my-0 fw-normal"><%= current_user.email %></h6>
-                </span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated profile-dropdown">
-                <!--                <a class="dropdown-item" href="<%#= edit_user_path(current_user.id) %>">
-                  <i class="mdi mdi-account-circle me-1"></i>
-                  <span><%#= t('topbar.profile') %></span>
-                </a>-->
-                <%= button_to destroy_user_session_path, method: :delete, class: "dropdown-item", form: { class: "d-inline" } do %>
-                  <i class="mdi mdi-logout me-1"></i>
-                  <span><%= t('topbar.logout') %></span>
-                <% end %>
-              </div>
-            </li>
-          </ul>
-        </div>
+              <span class="d-lg-flex flex-column gap-1 d-none">
+                <h5 class="my-0"><%= current_user.name %></h5>
+                <h6 class="my-0 fw-normal"><%= current_user.email %></h6>
+              </span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated profile-dropdown">
+              <%= button_to destroy_user_session_path, method: :delete, class: "dropdown-item", form: { class: "d-inline" } do %>
+                <i class="mdi mdi-logout me-1"></i>
+                <span><%= t('topbar.logout') %></span>
+              <% end %>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
+</div>

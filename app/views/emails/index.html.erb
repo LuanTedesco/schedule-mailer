@@ -19,6 +19,7 @@
           <th><%= t("email.body") %></th>
           <th><%= t("email.scheduled_at") %></th>
           <th><%= t("email.sended") %></th>
+          <th><%= t("email.user") %></th>
           <th><%= t("email.status") %></th>
           <th width="100px"><%= t("email.actions") %></th>
         </tr>
@@ -26,11 +27,12 @@
       <tbody>
         <% @emails.each do |email| %>
           <tr>
-            <td><%= email.to.titleize %></td>
+            <td><%= email.to %></td>
             <td><%= email.subject.titleize %></td>
             <td><%= email.body %></td>
             <td><%= email.scheduled_at.strftime("%d/%m/%Y %H:%M:%S") %></td>
             <td><%= email.sended %></td>
+            <td><%= email.user.name.titleize %></td>
             <td>
               <span class="badge <%= email.status ? 'bg-success' : 'bg-danger' %>">
                 <%= email.status ? t('status.true') : t('status.false') %>

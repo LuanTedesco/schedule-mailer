@@ -3,7 +3,7 @@ class EmailsController < ApplicationController
   before_action :set_email, only: %i[ show edit update destroy ]
 
   def index
-    @emails = Email.all
+    @emails = Email.where(user_id: current_user.id, status: true)
     @pagy, @emails = pagy(@emails, items: 10)
   end
 
@@ -16,6 +16,7 @@ class EmailsController < ApplicationController
 
   def create
     @email = Email.new(email_params)
+    @email.user = current_user
     @email.save
 
     if @email.scheduled_at.present? && @email.scheduled_at < Time.current
@@ -33,7 +34,7 @@ class EmailsController < ApplicationController
   end
 
   def update
-    email_params.delete(:status) if !can_update_status?
+    email_params.delete(:status)
     @email.update(email_params)
     flash[:success] = "Email was successfully updated."
     redirect_to emails_path
@@ -65,6 +66,6 @@ class EmailsController < ApplicationController
   end
 
   def email_params
-    params.require(:email).permit(:to, :subject, :body, :status, :scheduled_at, :sended)
+    params.require(:email).permit(:to, :subject, :body, :status, :scheduled_at, :sended, :user_id)
   end
 end

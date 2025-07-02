@@ -11,26 +11,23 @@ class UsersController < ApplicationController
 
   def show
     redirect_to root_path
-    flash[:alert] = "Você não tem permissão para realizar essa ação."
+    flash[:alert] = "Voce nao tem permissao para realizar essa acao."
   end
 
   def new
     @user = User.new
-    @departaments = Departament.all
   end
 
   def edit
     @user = User.find(params[:id])
-    @departaments = Departament.all
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
       redirect_to users_path
-      flash[:success] = "Usuário criado com sucesso."
+      flash[:success] = "Usuario criado com sucesso."
     else
-      @departaments = Departament.all
       render :new
     end
   end
@@ -38,7 +35,7 @@ class UsersController < ApplicationController
   def update
     @user.avatar.attached?
     if @user.update(user_params)
-      flash[:success] = "Usuário atualizado com sucesso."
+      flash[:success] = "Usuario atualizado com sucesso."
       redirect_to users_path
     end
   end
@@ -46,7 +43,7 @@ class UsersController < ApplicationController
   def destroy
     @user.update(status: false)
     redirect_to users_path
-    flash[:success] = "Usuário apagado com sucesso."
+    flash[:success] = "Usuario apagado com sucesso."
   end
 
   private
@@ -68,7 +65,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :status, :role, :avatar, departament_ids: []).tap do |user_params|
+    params.require(:user).permit(:name, :email, :status, :role, :avatar).tap do |user_params|
       if params[:user][:password].present?
         user_params[:password] = params[:user][:password]
         user_params[:password_confirmation] = params[:user][:password_confirmation]

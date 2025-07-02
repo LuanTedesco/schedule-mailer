@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true
   validates :role, presence: true
+  has_many :emails
 
   enum role: { user: 0, admin: 1, manager: 2, moderator: 3 }
 

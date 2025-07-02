@@ -34,19 +34,15 @@
       <%= f.label :avatar, t("form.avatar"), class: "form-label" %>
       <%= f.file_field :avatar, class: "form-control form-control-light" %>
     </div>
-    <div class="col-md-6 mb-3">
-      <%= f.label :departaments, t("form.departaments"), class: "form-label" %>
-      <%= f.select :departament_ids, options_for_select(@departaments.map { |departament| [departament.name, departament.id] }, @user.departament_ids), {}, { multiple: true, class: "ts-custom", id: "select-more-options" } %>
-    </div>
   </div>
   <div class="row">
     <div class="col-md-6 mb-3">
       <%= f.label :role, t("form.role"), class: "form-label" %>
-      <%= f.select :role, options_for_select(User.roles.keys.map { |k| [k.titleize, k] }, f.object.role), { prompt: t("select") }, class: "ts-custom", id: "select-one-option", required: true %>
+      <%= f.select :role, options_for_select(User.roles.keys.map { |k| [k.titleize, k] }, f.object.role), { prompt: t("select") }, class: "form-select", required: true %>
     </div>
     <div class="col-md-6 mb-3">
       <%= f.label :status, class: "form-label" %>
-      <%= f.select :status, [[t("status.active"), true], [t("status.inactive"), false]], {}, class: "ts-custom", id: "select-one-option" %>
+      <%= f.select :status, [[t("status.active"), true], [t("status.inactive"), false]], {}, class: "form-select" %>
     </div>
   </div>
   <div class="d-flex justify-content-end">

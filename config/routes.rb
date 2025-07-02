@@ -7,4 +7,5 @@ Rails.application.routes.draw do
       get :fix_errors_body
     end
   end
+  resources :users, only: %i[new create show index edit update destroy]
 end
