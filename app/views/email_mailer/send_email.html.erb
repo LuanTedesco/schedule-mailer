@@ -65,6 +65,7 @@
         Sistema Schedule Mailer
       </div>
       <div class="email-body">
+        <p><strong>Enviado por:</strong> <%= @sender %></p>
         <p><%= simple_format(@body) %></p>
       </div>
       <div class="email-footer">
