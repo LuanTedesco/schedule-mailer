@@ -1,47 +1,59 @@
-function geminiAction(btn){
-    const spinnerContainer = document.getElementById("loading-spinner");
-    const textarea = document.querySelector("#email_body");
-    const text = textarea.value;
+function geminiAction(btn) {
+  const textarea = document.querySelector("#email_body");
+  const text = textarea.value;
 
-    if (!text.trim()) {
-        alert("Corpo do e-mail está vazio!");
-        return;
-    }
+  if (!text.trim()) {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Campo vazio',
+      text: 'Corpo do e-mail está vazio!',
+      theme: "dark",
+      confirmButtonText: 'Ok'
+    });
+    return;
+  }
 
-    if(!confirm('Deseja enviar seu texto para o Gemini?')) {
-        return;
-    }
+  Swal.fire({
+    title: 'Confirmação',
+    text: 'Deseja enviar seu texto para o Gemini?',
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonText: 'Sim',
+    cancelButtonText: 'Não',
+    theme: "dark"
+  }).then((result) => {
+    if (!result.isConfirmed) return;
 
-    spinnerContainer.innerHTML = `
-        <div class="d-flex align-items-center gap-2 text-primary">
-        <div class="spinner-border spinner-border-sm" role="status"></div>
-        <strong id="spinner-text">Carregando</strong>
-        </div>
-    `;
-
-    let dotCount = 0;
-    const intervalId = setInterval(() => {
-        const spinnerText = document.getElementById("spinner-text");
-        if (!spinnerText) return clearInterval(intervalId);
-        dotCount = (dotCount + 1) % 4;
-        spinnerText.textContent = "Carregando" + ".".repeat(dotCount);
-    }, 400);
+    // Modal de loading do SweetAlert2
+    Swal.fire({
+      title: 'Carregando...',
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+      theme: "dark"
+    });
 
     const url = `/emails/${btn.id}`;
 
     fetch(`${url}?body=${encodeURIComponent(text)}`)
-        .then(res => res.json())
-        .then(data => {
+      .then(res => res.json())
+      .then(data => {
         textarea.value = data.result;
-        })
-        .catch(err => {
+      })
+      .catch(err => {
         console.error(err);
-        alert("Erro ao processar o texto.");
-        })
-        .finally(() => {
-        clearInterval(intervalId);
-        spinnerContainer.innerHTML = '';
-    });
+        Swal.fire({
+          icon: 'error',
+          title: 'Erro',
+          text: 'Erro ao processar o texto.',
+          theme: "dark"
+        });
+      })
+      .finally(() => {
+        Swal.close();
+      });
+  });
 }
 
 window.geminiAction = geminiAction;

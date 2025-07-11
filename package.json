@@ -14,6 +14,7 @@
     "postcss-cli": "^10.1.0",
     "sass": "^1.64.2",
     "sortablejs": "^1.15.3",
+    "sweetalert2": "^11.22.2",
     "toastr": "^2.1.4",
     "tom-select": "^2.4.1"
   },

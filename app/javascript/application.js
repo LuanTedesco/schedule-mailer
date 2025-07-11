@@ -5,3 +5,5 @@ import './controllers'
 import './jquery'
 import './custom/custom'
 import './custom/gemini'
+import Swal from 'sweetalert2'
+window.Swal = Swal
