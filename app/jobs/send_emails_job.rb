@@ -1,7 +1,5 @@
 class SendEmailsJob < ApplicationJob
-  queue_as :default
-
-  def perform(*args)
+  def run
     Email.where(sended: false).each do |email|
       send_email(email)
     end
