@@ -1,6 +1,6 @@
 pt-BR:
   email:
-    to: Para
+    to: Destinatário
     subject: Assunto
     body: Corpo
     scheduled_at: Agendado para
