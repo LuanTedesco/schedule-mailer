@@ -1,0 +1,226 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API V1",
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/emails": {
+      "get": {
+        "summary": "Lista emails do usuário",
+        "tags": ["Emails"],
+        "responses": {
+          "200": {
+            "description": "Lista de emails retornada"
+          }
+        }
+      },
+      "post": {
+        "summary": "Cria um email",
+        "tags": ["Emails"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "to": { "type": "string" },
+                  "subject": { "type": "string" },
+                  "body": { "type": "string" },
+                  "status": { "type": "boolean" },
+                  "scheduled_at": { "type": "string", "format": "date-time" },
+                  "sended": { "type": "boolean" },
+                  "user_id": { "type": "string", "format": "uuid" }
+                },
+                "required": ["to", "subject", "body"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Email criado" }
+        }
+      }
+    },
+    "/emails/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": { "type": "string", "format": "uuid" }
+        }
+      ],
+      "get": {
+        "summary": "Exibe um email",
+        "tags": ["Emails"],
+        "responses": {
+          "200": { "description": "Email encontrado" },
+          "404": { "description": "Email não encontrado" }
+        }
+      },
+      "put": {
+        "summary": "Atualiza um email",
+        "tags": ["Emails"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "to": { "type": "string" },
+                  "subject": { "type": "string" },
+                  "body": { "type": "string" },
+                  "status": { "type": "boolean" },
+                  "scheduled_at": { "type": "string", "format": "date-time" },
+                  "sended": { "type": "boolean" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Email atualizado" }
+        }
+      },
+      "delete": {
+        "summary": "Deleta (inativa) um email",
+        "tags": ["Emails"],
+        "responses": {
+          "204": { "description": "Email deletado" }
+        }
+      }
+    },
+    "/emails/boost_email_body": {
+      "get": {
+        "summary": "Aprimora corpo do email",
+        "tags": ["Emails"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Texto aprimorado" }
+        }
+      }
+    },
+    "/emails/fix_errors_body": {
+      "get": {
+        "summary": "Corrige erros no corpo do email",
+        "tags": ["Emails"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Texto corrigido" }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "summary": "Lista usuários",
+        "tags": ["Users"],
+        "responses": {
+          "200": { "description": "Lista de usuários" }
+        }
+      },
+      "post": {
+        "summary": "Cria usuário",
+        "tags": ["Users"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "email": { "type": "string", "format": "email" },
+                  "status": { "type": "boolean" },
+                  "role": { "type": "integer" },
+                  "password": { "type": "string" },
+                  "password_confirmation": { "type": "string" }
+                },
+                "required": [
+                  "name",
+                  "email",
+                  "password",
+                  "password_confirmation"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Usuário criado" }
+        }
+      }
+    },
+    "/users/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": { "type": "string", "format": "uuid" }
+        }
+      ],
+      "get": {
+        "summary": "Exibe usuário",
+        "tags": ["Users"],
+        "responses": {
+          "200": { "description": "Usuário encontrado" },
+          "404": { "description": "Usuário não encontrado" }
+        }
+      },
+      "put": {
+        "summary": "Atualiza usuário",
+        "tags": ["Users"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "email": { "type": "string", "format": "email" },
+                  "status": { "type": "boolean" },
+                  "role": { "type": "integer" },
+                  "password": { "type": "string" },
+                  "password_confirmation": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Usuário atualizado" }
+        }
+      },
+      "delete": {
+        "summary": "Deleta (inativa) usuário",
+        "tags": ["Users"],
+        "responses": {
+          "204": { "description": "Usuário deletado" }
+        }
+      }
+    }
+  }
+}

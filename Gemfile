@@ -27,6 +27,9 @@ gem "rest-client"
 group :development, :test do
   gem "debug", platforms: %i[mri mingw x64_mingw]
   gem "rails_live_reload"
+  gem "rdoc"
+  gem "rspec-rails"
+  gem "rswag"
 end
 
 group :development do
